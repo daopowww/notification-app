@@ -1,0 +1,22 @@
+{
+  "name": "@notification-app/backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "tsx ./src/index.ts",
+    "linter-check": "eslint .",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "eslint": "^10.15.0",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.73.0"
+  }
+}
