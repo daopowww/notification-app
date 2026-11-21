@@ -1,0 +1,9 @@
+{
+  "name": "@notification-app/shared",
+  "version": "1.0.0",
+  "license": "ISC",
+  "type": "module",
+  "exports": {
+    ".": "./src/schemas/index.ts"
+  }
+}

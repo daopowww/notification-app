@@ -6,11 +6,12 @@
   "private": true,
   "scripts": {
     "dev:frontend": "npm run dev -w ./apps/frontend",
-    "dev:backend": "npm run dev -w ./apps/backend"
+    "dev:backend": "npm run start -w ./apps/backend"
   },
   "workspaces": [
     "apps/backend",
-    "apps/frontend"
+    "apps/frontend",
+    "apps/shared"
   ],
   "devDependencies": {
     "prettier": "3.10.1"
