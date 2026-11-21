@@ -2,8 +2,9 @@ import express from "express";
 import { notificationRequest } from "@notification-app/shared";
 import { isNodeMailerError } from "./utils/index.ts";
 import { transporter } from "./tranporter.ts";
+import { logs } from "./data/index.ts";
 import multer from "multer";
-import * as fs from "node:fs";
+import fs from "node:fs";
 
 const app = express();
 const upload = multer({ dest: "./uploads/" });
@@ -48,8 +49,22 @@ app.post(
         signal: AbortSignal.timeout(30_000),
       });
 
+      logs.push({
+        createdAt: new Date(),
+        channel: "email",
+        recipient,
+        status: "accepted",
+      });
+
       console.log("Письмо отправлено", info.messageId);
     } catch (error) {
+      logs.push({
+        createdAt: new Date(),
+        channel: "email",
+        recipient: safeData.data.recipient,
+        status: "failed",
+      });
+
       if (isNodeMailerError(error)) {
         if (error.code === "EAUTH") {
           console.error("Ошибка входа:", error.message);
@@ -88,6 +103,10 @@ app.post(
       .json({ message: "Письмо принято почтовым сервисом" });
   },
 );
+
+app.get("/api/notifications/history", (req, res) => {
+  res.status(200).json({ logs: [...logs].reverse() });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
