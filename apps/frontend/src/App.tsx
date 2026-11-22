@@ -1,10 +1,11 @@
-import { NotificationPage } from "@/components/page/NotificationPage";
 import { Toaster } from "@/components/ui/toast.tsx";
+import { RouterProvider } from "react-router";
+import { router } from "@/router";
 
 export const App = () => {
   return (
     <Toaster>
-      <NotificationPage />
+      <RouterProvider router={router} />
     </Toaster>
   );
 };
