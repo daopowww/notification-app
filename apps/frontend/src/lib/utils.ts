@@ -13,3 +13,7 @@ export const createValuesToFormData = <T extends Record<string, unknown>>(
 
   return formData;
 };
+
+export const formatDate = (date: Date) => {
+  return new Date(date).toLocaleString("ru-RU");
+};

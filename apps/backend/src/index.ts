@@ -50,6 +50,7 @@ app.post(
       });
 
       logs.push({
+        id: crypto.randomUUID(),
         createdAt: new Date(),
         channel: "email",
         recipient,
@@ -59,6 +60,7 @@ app.post(
       console.log("Письмо отправлено", info.messageId);
     } catch (error) {
       logs.push({
+        id: crypto.randomUUID(),
         createdAt: new Date(),
         channel: "email",
         recipient: safeData.data.recipient,
@@ -105,7 +107,7 @@ app.post(
 );
 
 app.get("/api/notifications/history", (req, res) => {
-  res.status(200).json({ logs: [...logs].reverse() });
+  return res.status(200).json({ logs: [...logs].reverse() });
 });
 
 app.listen(port, () => {

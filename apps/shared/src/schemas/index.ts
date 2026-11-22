@@ -15,3 +15,17 @@ export const notificationRequest = z.object({
 });
 
 export type NotificationRequest = z.infer<typeof notificationRequest>;
+
+const logSchema = z.object({
+  id: z.string(),
+  createdAt: z.iso.datetime().pipe(z.coerce.date()),
+  channel: z.literal("email"),
+  recipient: z.string(),
+  status: z.literal(["accepted", "failed"]),
+});
+
+export type LogType = z.infer<typeof logSchema>;
+
+export const historyResponse = z.object({ logs: z.array(logSchema) });
+
+export type HistoryResponse = z.infer<typeof historyResponse>;
