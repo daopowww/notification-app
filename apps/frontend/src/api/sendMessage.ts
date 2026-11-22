@@ -1,5 +1,5 @@
 export const sendMessage = async (inputs: FormData) => {
-  const response = await fetch("api/notifications", {
+  const response = await fetch("/api/notifications", {
     method: "POST",
     body: inputs,
   });

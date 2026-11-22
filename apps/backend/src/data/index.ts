@@ -1,8 +1,3 @@
-type Log = {
-  createdAt: Date;
-  channel: "email";
-  recipient: string;
-  status: "accepted" | "failed";
-};
+import type { LogType } from "@notification-app/shared";
 
-export const logs: Log[] = [];
+export const logs: LogType[] = [];

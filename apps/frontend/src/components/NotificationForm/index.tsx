@@ -65,7 +65,7 @@ export const NotificationForm = () => {
 
   return (
     <form
-      className="grid gap-5"
+      className="grid grid-cols-1 gap-5"
       id="form-notification"
       onSubmit={handleSubmit(onSubmit)}
       encType="multipart/form-data"
@@ -80,7 +80,7 @@ export const NotificationForm = () => {
             </FieldLabel>
             <Input
               {...field}
-              className="h-8 px-3 text-base sm:text-sm"
+              className="h-8 px-3"
               type="email"
               id="form-notification-recipient"
               aria-invalid={fieldState.invalid}
@@ -101,7 +101,8 @@ export const NotificationForm = () => {
             </FieldLabel>
             <Input
               {...field}
-              className="h-8 px-3 text-base sm:text-sm"
+              className="h-8 px-3"
+              placeholder="Кратко о сути сообщения"
               id="form-notification-title"
               aria-invalid={fieldState.invalid}
               autoComplete="off"
@@ -121,6 +122,7 @@ export const NotificationForm = () => {
             <InputGroup>
               <InputGroupTextarea
                 {...field}
+                className="resize-y"
                 id="form-notification-message"
                 rows={6}
                 placeholder="Введите сообщение"
@@ -149,7 +151,7 @@ export const NotificationForm = () => {
             </FieldLabel>
             <Input
               {...field}
-              className="h-8 cursor-pointer px-2 py-2 text-sm text-muted-foreground file:mr-3 file:cursor-pointer file:bg-muted file:px-2.5 file:text-foreground"
+              className="h-9 cursor-pointer file:mr-3 file:cursor-pointer file:bg-muted file:px-2.5 file:text-foreground"
               value={undefined}
               onChange={(event) =>
                 field.onChange(event.target.files && event.target.files[0])
@@ -163,11 +165,7 @@ export const NotificationForm = () => {
         )}
       />
       <div className="flex justify-end border-t border-border pt-5">
-        <Button
-          className="h-11 w-full px-5 text-sm sm:w-auto"
-          type="submit"
-          disabled={isLoading}
-        >
+        <Button className="h-8 px-5" type="submit" disabled={isLoading}>
           {isLoading ? "Отправляем…" : "Отправить письмо"}
         </Button>
       </div>
