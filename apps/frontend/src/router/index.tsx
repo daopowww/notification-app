@@ -3,6 +3,7 @@ import { NotificationPage } from "@/components/pages";
 import { HistoryPage } from "@/components/pages";
 import { Layout } from "@/components/Layout";
 import { ROUTES } from "@/router/routes.ts";
+import { historyLoader } from "@/router/loaders";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.HISTORY,
         Component: HistoryPage,
+        loader: historyLoader,
       },
     ],
   },
